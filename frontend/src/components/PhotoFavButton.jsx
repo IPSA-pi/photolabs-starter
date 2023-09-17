@@ -2,19 +2,22 @@ import React, { useCallback, useState } from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton() {
+function PhotoFavButton(props) {
   const [favIconStatus, setFavIconStatus] = useState(false);
 
   const handleFavIcon = () => {
     setFavIconStatus(!favIconStatus);
-    // favIconStatus === true ? setFavIconStatus(false) : setFavIconStatus(true);
-    // console.log('clicked fav icon and its status is: ', favIconStatus)
+    if(!favIconStatus || props.alwaysSelected) {
+      props.onFavorite();
+    }
   }
+
+  const shouldDisplayAlert = props.favorites && props.favorites.length > 0;
 
   return (
     <div className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg" onClick={handleFavIcon}>
-        <FavIcon selected={favIconStatus}/>
+        <FavIcon selected={favIconStatus || props.alwaysSelected} displayAlert={shouldDisplayAlert} />
       </div>
     </div>
   );

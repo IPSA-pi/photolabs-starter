@@ -4,7 +4,8 @@ import PhotoListItem from './components/PhotoListItem';
 import PhotoList from './components/PhotoList';
 import TopicList from './components/TopicList';
 import TopicListItem from './components/TopicListItem';
-import TopNavigationBar from './components/TopNavigationBar'
+import TopNavigationBar from './components/TopNavigationBar';
+import HomeRoute from './routes/HomeRoute'
 import './App.scss';
 
 
@@ -12,7 +13,7 @@ import './App.scss';
 const App = () => {
   return (
     <div className="App">
-      <TopNavigationBar />
+      <HomeRoute />
     </div>
   );
 };
